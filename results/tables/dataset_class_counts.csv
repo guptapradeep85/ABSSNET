@@ -1,0 +1,7 @@
+Class,Expected,Observed,Matches
+No_DR,1805,1805,True
+Mild,370,370,True
+Moderate,999,999,True
+Severe,193,193,True
+Proliferate_DR,295,295,True
+Total,3662,3662,True

@@ -1,0 +1,8 @@
+Reliability_bin,Samples,Accuracy
+"c in [0.0,0.2)",6,0.5
+"c in [0.2,0.4)",562,0.4591
+"c in [0.4,0.6)",630,0.4444
+"c in [0.6,0.8)",694,0.4899
+"c in [0.8,1.0)",1770,0.9559
+High reliability c >= 0.76,2476,0.9427
+Low reliability c < 0.76,1186,0.4626

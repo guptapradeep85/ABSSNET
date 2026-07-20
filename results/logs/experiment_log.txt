@@ -1,0 +1,9 @@
+Revision experiment log
+
+This public Python-only repository includes custom Python scripts, saved ABSS-Net fold checkpoints, processed result tables, generated figures, and archived revision outputs available at release time.
+
+Important provenance note:
+- Result-packaging scripts do not retrain ABSS-Net from scratch.
+- Full model reproduction requires the public source dataset, the required image folder structure, and a GPU runtime.
+- No Colab/Jupyter notebooks are included in this Python-only release.
+

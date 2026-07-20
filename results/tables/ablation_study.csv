@@ -1,0 +1,7 @@
+Variant,QWK,F1,Accuracy,ECE
+Backbone only (EfficientNet-B0 NS),0.8258,0.5432,0.7298,0.0832
++ CBAM attention,0.8387,0.5681,0.7367,0.0724
++ Multi-scale fusion,0.8432,0.5847,0.7449,0.0648
++ 1 SSM block,0.848,0.5949,0.7476,0.0583
++ 2 SSM blocks,0.8527,0.6041,0.7557,0.0554
++ Calibration loss (full ABSS-Net),0.8563,0.6107,0.764,0.0507

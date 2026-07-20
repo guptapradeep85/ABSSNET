@@ -1,0 +1,6 @@
+Metric,Value
+Accuracy,0.582
+Macro-F1,0.1473
+Quadratic Weighted Kappa,0.0034
+AUC (OvR macro),0.508
+Expected Calibration Error,0.1483

@@ -1,0 +1,6 @@
+Metric,Mean,Std,CI_95_Low,CI_95_High
+Accuracy,0.7026,0.042,0.6505,0.7547
+Macro-F1,0.5206,0.0553,0.4519,0.5892
+Quadratic Weighted Kappa,0.7933,0.0418,0.7414,0.8453
+AUC (OvR macro),0.8862,0.0168,0.8653,0.9071
+Expected Calibration Error,0.1778,0.0439,0.1233,0.2323

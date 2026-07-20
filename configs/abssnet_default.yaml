@@ -1,0 +1,91 @@
+# ABSS-Net - reference configuration.
+# These are the exact settings used for every result reported in the manuscript.
+
+experiment:
+  name: abssnet_dr224
+  seed: 42                    # Python, PYTHONHASHSEED, NumPy, PyTorch, CUDA
+  run_mode: cv                # 'cv' = stratified 5-fold | 'single' = 80/20 split
+
+data:
+  root: data/DR224/Train_image        # EDIT THIS - images are not shipped
+  raw_root: data/APTOS_RAW/Train_image   # optional, raw-vs-Gaussian ablation only
+  external_root: data/Messidor-2         # optional, external validation only
+  num_classes: 5
+  class_names: [No_DR, Mild, Moderate, Severe, Proliferate_DR]
+  expected_counts: {No_DR: 1805, Mild: 370, Moderate: 999, Severe: 193, Proliferate_DR: 295}
+  image_size: 224
+
+preprocessing:
+  use_clahe: true             # training only, never at inference
+  clahe_clip_limit: 2.0
+  clahe_tile_grid: [8, 8]
+  normalize_mean: [0.485, 0.456, 0.406]
+  normalize_std: [0.229, 0.224, 0.225]
+
+augmentation:                 # training only
+  horizontal_flip: true
+  vertical_flip: true
+  rotation_degrees: 15
+  color_jitter: {brightness: 0.15, contrast: 0.15, saturation: 0.10, hue: 0.02}
+  use_cutmix: true
+  cutmix_alpha: 1.0
+  cutmix_prob: 0.3
+  use_mixup: true
+  mixup_alpha: 0.4
+  mixup_prob: 0.3
+  # CutMix and MixUp are mutually exclusive within a batch.
+
+model:
+  backbone: tf_efficientnet_b0.ns_jft_in1k
+  backbone_pretrained: true
+  backbone_frozen: false      # fully fine-tuned
+  out_indices: [2, 3, 4]      # F3/F4/F5 at strides 8/16/32
+  cbam_reduction: 16
+  cbam_spatial_kernel: 7
+  projection_channels: 128
+  fused_channels: 256
+  num_ssm_blocks: 2
+  ssm_expansion: 2
+  ssm_dwconv_kernel: 5
+  ssm_dropout: 0.1
+  head_dropout: 0.3
+  cls_head_dims: [256, 128, 5]
+  conf_head_dims: [256, 64, 1]
+  total_parameters: 5470756
+
+loss:
+  focal_gamma: 2.0
+  class_weights: [0.2157, 1.0522, 0.3898, 2.0225, 1.3198]   # inverse frequency, sum = C
+  cal_weight: 0.1             # lambda - Brier-style penalty
+  reliability_weight: 0.5     # beta - reliability BCE
+  reliability_target_detached: true   # stop-gradient on the correctness target
+
+training:
+  epochs: 20
+  batch_size: 32
+  num_workers: 2
+  optimizer: AdamW
+  lr: 1.0e-4
+  weight_decay: 1.0e-4
+  betas: [0.9, 0.999]
+  scheduler: CosineAnnealingLR
+  t_max: 20
+  amp: true                   # torch.amp fp16
+  early_stopping: false       # all 20 epochs always run
+  checkpoint_selection: best_val_qwk
+
+cross_validation:
+  n_splits: 5
+  shuffle: true
+  random_state: 42
+  stratified: true
+
+evaluation:
+  ece_bins: 15
+  reliability_threshold: 0.76       # c* operating point
+  selective_coverages: [0.9, 0.8, 0.7]
+  temperature_scaling: true
+
+hardware:
+  device: cuda
+  reference_gpu: NVIDIA A100-SXM4-40GB
