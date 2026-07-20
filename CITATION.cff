@@ -1,0 +1,52 @@
+cff-version: 1.2.0
+title: >-
+  ABSS-Net - Reliable and calibrated diabetic retinopathy grading from Gaussian-filtered fundus images using attention and gated state-space feature mixing
+message: >-
+  If you use this software, please cite both the archived Zenodo release
+  and the associated journal article.
+type: software
+authors:
+  - family-names: Gupta
+    given-names: Pradeep
+    affiliation: >-
+      Department of Computer Science and Engineering, Ajay Kumar Garg
+      Engineering College, Ghaziabad, India
+  - family-names: Yeh
+    given-names: Shyh-An
+    affiliation: >-
+      Department of Medical Imaging and Radiological Sciences, I-Shou
+      University, Kaohsiung, Taiwan
+  - family-names: Lee
+    given-names: Tsair-Fwu
+    affiliation: >-
+      Medical Physics and Informatics Laboratory of Electronics Engineering,
+      National Kaohsiung University of Science and Technology, Kaohsiung,
+      Taiwan
+repository-code: "https://github.com/guptapradeep85/ABSSNET"
+url: "https://github.com/guptapradeep85/ABSSNET"
+abstract: >-
+  Source code, configuration, cross-validation and calibration analyses,
+  reliability-head evaluation, efficiency profiling, explainability utilities
+  and derived result files for ABSS-Net, a compact attention and gated
+  state-space network for calibrated five-class diabetic retinopathy grading
+  on Gaussian-filtered colour fundus images.
+keywords:
+  - diabetic retinopathy
+  - fundus imaging
+  - deep learning
+  - model calibration
+  - selective prediction
+  - state-space models
+  - CBAM attention
+  - explainable AI
+license: MIT
+version: 1.0.0
+date-released: "2026-07-20"
+# ---------------------------------------------------------------------------
+# AUTHOR ACTION: after publishing the Zenodo record, uncomment and complete
+# the identifiers block below with the version-specific DOI, then commit.
+# ---------------------------------------------------------------------------
+# identifiers:
+#   - type: doi
+#     value: [ZENODO DOI TO BE INSERTED BEFORE PUBLICATION]
+#     description: Archived v1.0.0 release corresponding to the journal article

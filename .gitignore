@@ -1,0 +1,73 @@
+# ---------------------------------------------------------------------------
+# Python
+# ---------------------------------------------------------------------------
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.ipynb_checkpoints/
+.pytest_cache/
+.mypy_cache/
+*.egg-info/
+build/
+dist/
+
+# ---------------------------------------------------------------------------
+# Environments
+# ---------------------------------------------------------------------------
+.venv/
+venv/
+env/
+ENV/
+.conda/
+
+# ---------------------------------------------------------------------------
+# OS / editor
+# ---------------------------------------------------------------------------
+.DS_Store
+Thumbs.db
+desktop.ini
+.idea/
+.vscode/
+*.swp
+*~
+
+# ---------------------------------------------------------------------------
+# DATA - never commit fundus images. They are third-party data that may not be
+# redistributed. See DATA_AVAILABILITY.md.
+# ---------------------------------------------------------------------------
+data/
+DR224/
+APTOS_RAW/
+Messidor-2/
+messidor*/
+*.jpg
+*.jpeg
+*.tif
+*.tiff
+!results/figures/*.png
+
+# ---------------------------------------------------------------------------
+# CREDENTIALS - never commit. Add anything else your workflow needs.
+# ---------------------------------------------------------------------------
+kaggle.json
+.env
+*.pem
+*.key
+credentials*
+secrets*
+service_account*.json
+token.json
+*.token
+
+# ---------------------------------------------------------------------------
+# Large / transient run artefacts
+# ---------------------------------------------------------------------------
+runs/
+wandb/
+lightning_logs/
+checkpoints/
+*.ckpt
+*.tar
+*.zip
+!ABSS-Net-v*.zip

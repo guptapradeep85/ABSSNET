@@ -1,0 +1,36 @@
+# ABSS-Net - Python dependencies
+# Tested on Python 3.10 / 3.11 with CUDA 12.x (Google Colab A100).
+# Install with:  pip install -r requirements.txt
+#
+# PyTorch is pinned to a minimum version rather than an exact build because the
+# correct wheel depends on your CUDA version. See:
+# https://pytorch.org/get-started/locally/
+
+torch>=2.0.0
+torchvision>=0.15.0
+timm>=0.9.12
+torchmetrics>=1.0.0
+
+numpy>=1.24.0
+pandas>=2.0.0
+scipy>=1.10.0
+scikit-learn>=1.3.0
+
+opencv-python>=4.8.0
+Pillow>=10.0.0
+
+matplotlib>=3.7.0
+seaborn>=0.12.0
+
+openpyxl>=3.1.0
+tqdm>=4.65.0
+umap-learn>=0.5.4
+thop>=0.1.1
+
+# ---------------------------------------------------------------------------
+# OPTIONAL - required ONLY for the genuine selective-scan Mamba ablation in
+# code/ablation_ssm_vs_mamba.py. These need a CUDA toolchain and will not
+# install on CPU-only machines. The rest of the repository runs without them.
+# ---------------------------------------------------------------------------
+# causal-conv1d>=1.1.0
+# mamba-ssm>=1.1.0

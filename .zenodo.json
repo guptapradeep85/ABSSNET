@@ -1,0 +1,51 @@
+{
+  "title": "ABSS-Net v1.0.0 - Reliable and calibrated diabetic retinopathy grading from Gaussian-filtered fundus images using attention and gated state-space feature mixing",
+  "upload_type": "software",
+  "description": "<p>Archived source code and derived research outputs supporting the article <em>Reliable and calibrated diabetic retinopathy grading from Gaussian-filtered fundus images using attention and gated state-space feature mixing</em>.</p><p>ABSS-Net is a compact (5,470,756-parameter) network for five-class ICDR diabetic retinopathy grading on Gaussian-filtered colour fundus images. It combines an ImageNet/Noisy-Student EfficientNet-B0 multi-scale feature pyramid, Convolutional Block Attention Modules at three feature scales, two stacked gated Mamba-inspired depth-wise-convolutional blocks for linear-complexity token mixing, and a dual classification plus scalar reliability head trained under a joint focal, Brier-style calibration and reliability BCE objective.</p><p>This deposit contains: the model definition and training/evaluation pipeline; the stratified five-fold cross-validation harness; temperature scaling and Brier/NLL/ECE/MCE calibration analyses; the selective-prediction (risk-coverage) evaluation of the reliability head; the raw-versus-Gaussian preprocessing ablation; a gated-block-versus-Mamba ablation scaffold; the frequency-attenuation analysis; the efficiency-profiling harness; Grad-CAM and Grad-CAM++ explainability utilities; trained per-fold checkpoints; and the derived result tables, figures and logs underlying every table and figure in the article.</p><p><strong>Data note:</strong> the retinal fundus images themselves are third-party data and are NOT included in this deposit. They must be obtained from Kaggle (Diabetic Retinopathy 224x224 Gaussian Filtered, derived from APTOS-2019) and from ADCIS (Messidor-2) under those providers' own terms. Instructions for obtaining and preparing the data are included.</p>",
+  "creators": [
+    {
+      "name": "Gupta, Pradeep",
+      "affiliation": "Department of Computer Science and Engineering, Ajay Kumar Garg Engineering College, Ghaziabad, India"
+    },
+    {
+      "name": "Yeh, Shyh-An",
+      "affiliation": "Department of Medical Imaging and Radiological Sciences, I-Shou University, Kaohsiung, Taiwan"
+    },
+    {
+      "name": "Lee, Tsair-Fwu",
+      "affiliation": "Medical Physics and Informatics Laboratory of Electronics Engineering, National Kaohsiung University of Science and Technology, Kaohsiung, Taiwan"
+    }
+  ],
+  "license": "MIT",
+  "access_right": "open",
+  "version": "1.0.0",
+  "publication_date": "2026-07-20",
+  "keywords": [
+    "diabetic retinopathy",
+    "fundus imaging",
+    "deep learning",
+    "model calibration",
+    "selective prediction",
+    "uncertainty estimation",
+    "state-space models",
+    "CBAM attention",
+    "explainable AI",
+    "EfficientNet",
+    "medical image analysis"
+  ],
+  "language": "eng",
+  "related_identifiers": [
+    {
+      "identifier": "https://github.com/guptapradeep85/ABSSNET",
+      "relation": "isSupplementTo",
+      "scheme": "url"
+    },
+    {
+      "identifier": "https://www.kaggle.com/datasets/sovitrath/diabetic-retinopathy-224x224-gaussian-filtered",
+      "relation": "references",
+      "scheme": "url",
+      "resource_type": "dataset"
+    }
+  ],
+  "notes": "AUTHOR ACTION BEFORE PUBLISHING: (1) add the journal article as a related identifier with relation 'isSupplementTo' once the article DOI is issued; (2) add verified ORCID iDs to each creator - omit rather than guess; (3) confirm the version tag matches the GitHub release."
+}
