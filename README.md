@@ -137,7 +137,7 @@ python code/abss_net_all_experiments_colab.py --run-mode cv
 ```
 Key settings live in `configs/abssnet_default.yaml`: batch 32, AdamW lr 1e-4 wd 1e-4, CosineAnnealingLR T_max=20, 20 epochs, AMP fp16, seed 42, `RELIABILITY_WEIGHT=0.5`, `CAL_WEIGHT=0.1`.
 **Checkpoint selection:** the checkpoint with the best **validation QWK** is saved per fold (`models/abssnet_fold{k}.pth`). No early stopping is used - all 20 epochs always run.
-> **Caveat on `code/abss_net.py`.** This is the earlier single-split baseline script. Its training loop implements only `L_focal + 0.1 * L_cal` - it does **not** include the reliability BCE term, CLAHE, CutMix or MixUp, and it uses the legacy `timm` backbone alias `tf_efficientnet_b0_ns`. **It does not reproduce the manuscript results.** Use `abss_net_all_experiments_colab.py`. See [REPRODUCIBILITY.md](REPRODUCIBILITY.md).
+> **Caveat on `code/abss_net.py`.** This is the earlier single-split baseline script. Its training loop implements only `L_focal + 0.1 * L_cal` - it does **not** include the reliability BCE term, CLAHE, CutMix or MixUp, and it uses the legacy `timm` backbone alias `tf_efficientnet_b0_ns`. **It does not reproduce the manuscript results.** Use `abss_net_all_experiments_colab.py`. 
 ### Five-fold cross-validation
 Folds are `StratifiedKFold(n_splits=5, shuffle=True, random_state=42)` over the full 3,662-image set in sorted filename order; each image is held out exactly once, and the out-of-fold predictions are pooled for dataset-level metrics. To materialise the exact split assignment as a CSV:
 ```bash
@@ -187,7 +187,6 @@ Two complementary strategies are reported, both computed on the pooled out-of-fo
 | Table 15 (frequency attenuation) | `frequency_attenuation_analysis.py` |
 | Figs 10, 18 (Grad-CAM) | Grad-CAM cells in `abss_net_all_experiments_colab.py` |
 
-The authoritative mapping, including every caveat, is in [REPRODUCIBILITY.md](REPRODUCIBILITY.md).
 
 ## Expected outputs
 
@@ -219,10 +218,8 @@ Reference copies of all of these are committed under `results/` and `models/`, s
 | Seed | 42 (Python, NumPy, PyTorch, CUDA) |
 | Checkpoint size | 21.2 MB per fold |
 | Peak GPU memory | 0.56 GB (inference, batch 32) |
-**Minimum to retrain:** any CUDA GPU with >= 8 GB. **Minimum to re-run the calibration, reliability and selective-prediction analyses:** CPU only, using the committed NPZ.
-**Determinism caveat:** seeds are fixed for Python, NumPy and PyTorch, but cuDNN autotuning and AMP are not forced into deterministic mode, so metrics may vary in the third decimal place between runs and across GPU models.
-## GitHub release information
-The version corresponding to the manuscript is tagged **v1.0.0**: https://github.com/guptapradeep85/ABSSNET/releases/tag/v1.0.0
-Cite the tagged release, not the moving `main` branch, so the cited version cannot change after submission.
+**Minimum to retrain:** any CUDA GPU with >= 8 GB. **Minimum to re-run the calibration, reliability and selective-prediction analyses:** 
+
+
 
 
